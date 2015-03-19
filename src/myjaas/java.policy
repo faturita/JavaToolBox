@@ -1,0 +1,32 @@
+grant      principal com.sun.security.auth.NTUserPrincipal "VEXRAROD" {
+  permission java.io.FilePermission "<<ALL FILES>>", "read,write,execute, delete";
+};
+
+grant      principal myjaas.PrindcipalImpl "testuser" {
+  permission java.io.FilePermission "<<ALL FILES>>", "read,write,execute";
+};
+
+grant {
+  permission java.util.PropertyPermission "idea.launcher.library", "read";
+  permission java.util.PropertyPermission "idea.launcher.port", "read";
+  permission java.util.PropertyPermission "file.encoding", "read";
+  permission java.lang.RuntimePermission "loadLibrary.*";
+  permission java.lang.RuntimePermission "getProtectionDomain";
+  permission javax.security.auth.AuthPermission "createLoginContext.Sample";
+  permission javax.security.auth.AuthPermission "createLoginContext.Sample2";
+  permission javax.security.auth.AuthPermission "doAs";
+  permission javax.security.auth.AuthPermission "doAsPrivileged";
+  permission javax.security.auth.AuthPermission "getSubject";
+  permission javax.security.auth.AuthPermission "getSubjectFromDomainCombiner";
+  permission javax.security.auth.AuthPermission "setReadOnly";
+  permission javax.security.auth.AuthPermission "modifyPrincipals";
+  permission javax.security.auth.AuthPermission "modifyPublicCredentials";
+  permission javax.security.auth.AuthPermission "modifyPrivateCredentials";
+  permission javax.security.auth.AuthPermission "refreshCredential";
+  permission javax.security.auth.AuthPermission "destroyCredential";
+  permission javax.security.auth.AuthPermission "createLoginContext.{*}";
+  permission javax.security.auth.AuthPermission "getLoginConfiguration";
+  permission javax.security.auth.AuthPermission "setLoginConfiguration";
+  permission javax.security.auth.AuthPermission "refreshLoginConfiguration";
+};
+

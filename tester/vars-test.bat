@@ -1,0 +1,23 @@
+set CLASSPATH=
+set XTRA_CLASSPATH=
+
+Set CLASSPATH=L:\work\apps\vhe-tpap\deploy\JOnAS\
+set CLASSPATH=%CLASSPATH%;L:\lib-jars\log4j.jar
+set CLASSPATH=%CLASSPATH%;L:\work\apps\vhe-tpap\deploy\JOnAS\lib\Establecimientos-JOnAS.jar
+set CLASSPATH=%CLASSPATH%;L:\work\apps\vhe-tpap\deploy\Tomcat\Establecimientos.jar
+set CLASSPATH=%CLASSPATH%;L:\work\apps\visahome\deploy\lib\VisaHome-JOnAS.jar
+set CLASSPATH=%CLASSPATH%;L:\work\common\deploy\lib\visa-common.jar
+set CLASSPATH=%CLASSPATH%;L:\work\external\teradev-foundation\deploy\lib\teradev-foundation.jar
+set CLASSPATH=%CLASSPATH%;L:\work\apps\ePOS\deploy\ePOSEjb-JOnAS.jar
+set CLASSPATH=%CLASSPATH%;L:\lib-jars\JEREMIE_jonas.jar
+set CLASSPATH=%CLASSPATH%;L:\lib-jars\jpos-1.3.4.jar
+set CLASSPATH=%CLASSPATH%;L:\lib-jars\quickdb.jar
+set CLASSPATH=%CLASSPATH%;L:\lib-jars\iaik_jce_full.jar
+set CLASSPATH=%CLASSPATH%;L:\lib-jars\castor-0.9.3.9-xml.jar
+set CLASSPATH=%CLASSPATH%;L:\lib-jars\mssqlserver.jar
+set CLASSPATH=%CLASSPATH%;L:\lib-jars\msutil.jar
+set CLASSPATH=%CLASSPATH%;L:\lib-jars\msbase.jar
+set CLASSPATH=%CLASSPATH%;L:\lib-jars\log4j.jar
+set CLASSPATH=%CLASSPATH%;L:\lib-jars\quickdb.jar
+set CLASSPATH=%CLASSPATH%;L:\lib-jars\lutris.jar
+set CLASSPATH=%CLASSPATH%;.

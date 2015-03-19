@@ -1,0 +1,49 @@
+CONEXION BRIDGE:Puerto Cliente:6667 con Servidor:chat.clarin.com.ar
+                Puerto Servidor:6667
+from Client:NICK hola,10,,13,USER guess guess guess nomatter nomatter,10,,13,
+from Server::Chat_Clarin_Digital 001 hola :Welcome to the Clarin Digital Servicio de Chat, http://chat.clarin.com.ar server hola,13,,10,:Chat_Clarin_Digital 002 hola :Your host is Chat_Clarin_Digital, running version 5.5.2650,13,,10,:Chat_Clarin_Digital 003 hola :This server was created Jul 20 1999 at 07:26:59 PDT,13,,10,:Chat_Clarin_Digital 004 hola Chat_Clarin_Digital 5.5.2650 aioxz abcdefhiklmnoprstuvxyz,13,,10,:Chat_Clarin_Digital 251 hola :There are 241 users and 51 invisible on 1 servers,13,,10,:Chat_Clarin_Digital 252 hola 1 :operator(s) online,13,,10,:Chat_Clarin_Digital 253 hola 3 :unknown connection(s),13,,10,:Chat_Clarin_Digital 254 hola 52 :channels formed,13,,10,:Chat_Clarin_Digital 255 hola :I have 241 clients and 0 servers,13,,10,:Chat_Clarin_Digital 265 hola :Current local users: 241 Max: 795,13,,10,:Chat_Clarin_Digital 266 hola :Current global users: 241 Max: 795,13,,10,:Chat_Clarin_Digital 375 hola :- Chat_Clarin_Digital Message of the Day -,13,,10,:Chat_Clarin_Digital 372 hola :- Reglamento,13,,10,:Chat_Clarin_Digital 372 hola :- -No repita tres o más veces la misma linea (flood).,13,,10,:Chat_Clarin_Digital 372 hola :- -Utilice mayúsculas sólo en comienzos de oración, nombres propios o siglas,13,,10,:Chat_Clarin_Digital 372 hola :- -No utilice apodos y/o términos insultantes u ofensivos.,13,,10,:Chat_Clarin_Digital 372 hola :- -No usar servers proxys en exceso.,13,,10,:Chat_Clarin_Digital 372 hola :- -Utilice solo una conexión por IP.,13,,10,:Chat_Clarin_Digital 372 hola :- -Los canales no pueden usarse para publicitar productos, u otros server de chat.,13,,10,:Chat_Clarin_Digital 372 hola :- Si ud. no respeta estas reglas o realiza actos que atenten contra el normal funcionamiento del chat, puede ser expulsado temporal o definitivamente del servidor.,13,,10,:Chat_Clarin_Digital 372 hola :- Clarín Digital no se responsabiliza por las actitudes de las personas que ingresan a los canales.,13,,10,:Chat_Clarin_Digital 372 hola :- Crear canales: nuevoscanales@chat.clarin.com.ar. Subject: Nuevo Canal. Cuerpo del mail: datos personales y canal que quiera crear.,13,,10,:Chat_Clarin_Digital 372 hola :- Quejas dudas o sugerencias: chatadmin@clarin.com.ar,13,,10,:Chat_Clarin_Digital 372 hola :- Operadores:,13,,10,:Chat_Clarin_Digital 372 hola :- AcidBurn, RoGeR, br1, Gizmo, GrOOOvY, Pablom,  SaBoTeUr, Sheebo, TINCHO, Virtuous, two, mother,13,,10,:Chat_Clarin_Digital 376 hola :End of /MOTD command,13,,10,
+from Client:JOIN #Buscador.Clarin,10,,13,
+from Server::hola!~guess@24.232.3.104 JOIN :#Buscador.Clarin,13,,10,
+from Server::Chat_Clarin_Digital 332 hola #Buscador.Clarin :Bienvenidos, respeten las normas del server, gracias. Dudas? /motd.,13,,10,:Chat_Clarin_Digital 353 hola = #Buscador.Clarin :hola PAITO crm ale vero matias pitu natalia eldiego ANTHONY vale Kevin Fabyan cuervito zoe ANDY22 Mosca Luismi Mauro @Trovals,13,,10,:Chat_Clarin_Digital 366 hola #Buscador.Clarin :End of /NAMES list.,13,,10,
+from Server::biyuka!~IRcap63@xxxxxxxxxx.arnet.net.ar JOIN :#Buscador.Clarin,13,,10,
+from Server::PAITO!~PAITO@xxxxxxxxxx.arnet.net.ar PRIVMSG #Buscador.Clarin :HOLA A TODOS,13,,10,
+from Client:PRIVMSG #Buscador.Clarin :hola que tal a tODOS !,10,,13,
+from Server::J-O-T-E!~J-O-T-E@xxxxxxxxxxxxx.ssd.net.ar JOIN :#Buscador.Clarin,13,,10,
+from Server::DOLORES_29!~DOLORES_29@200.49.0.XXX JOIN :#Buscador.Clarin,13,,10,
+from Server::PAITO!~PAITO@xxxxxxxxxx.arnet.net.ar PRIVMSG #Buscador.Clarin :HOLAAAAAAAAAA,13,,10,
+from Client:PRIVMSG #Buscador.Clarin :hola Dolores_29 , como andas ?,10,,13,
+from Server::DOLORES_29!~DOLORES_29@200.49.0.XXX PART #Buscador.Clarin,13,,10,
+from Server::alma!~alma@xxxxxxxx.fibertel.com.ar JOIN :#Buscador.Clarin,13,,10,
+from Server::PAITO!~PAITO@xxxxxxxxxx.arnet.net.ar PRIVMSG #Buscador.Clarin :ALGUNA DAMA QUE QUIERA CONVERSAR,13,,10,
+from Server::alma!~alma@xxxxxxxx.fibertel.com.ar PRIVMSG #Buscador.Clarin :andy, vine a despedirme, antes me cai,13,,10,
+from Server::ANDY22!~ANDY22@200.32.108.XXX PRIVMSG #Buscador.Clarin :ok alma,13,,10,
+from Server::ANDY22!~ANDY22@200.32.108.XXX PRIVMSG #Buscador.Clarin :jajajaja,13,,10,
+from Server::sergio37!~sergio37@xxxxxxxxx.senado.gov.ar JOIN :#Buscador.Clarin,13,,10,
+from Server::JLM!~JLM@209.13.235.XXX JOIN :#Buscador.Clarin,13,,10,
+from Server::Gatita!~Gatita@200.47.69.XXX JOIN :#Buscador.Clarin,13,,10,
+from Server:PING :Chat_Clarin_Digital,13,,10,
+from Server::sergio37!~sergio37@xxxxxxxxx.senado.gov.ar PRIVMSG #Buscador.Clarin :hola a todos!!!!!!!!!!,13,,10,
+from Server::PAITO!~PAITO@xxxxxxxxxx.arnet.net.ar PART #Buscador.Clarin,13,,10,
+from Server::JLM!~JLM@209.13.235.XXX PART #Buscador.Clarin,13,,10,
+from Server::Gatita!~Gatita@200.47.69.XXX PRIVMSG #Buscador.Clarin :hola a todos!!!!!!!!!,13,,10,
+from Server::ANDY22!~ANDY22@200.32.108.XXX PRIVMSG #Buscador.Clarin :quien sos Fabyan,13,,10,
+from Server::alma!~alma@xxxxxxxx.fibertel.com.ar PRIVMSG #Buscador.Clarin :quien sos fabyan?,13,,10,
+from Server::alma!~alma@xxxxxxxx.fibertel.com.ar PRIVMSG #Buscador.Clarin :que te pregunto, faby, andy?,13,,10,
+from Client:PRIVMSG #Buscador.Clarin :sergio37, decime si me copias ??????,10,,13,
+from Server::ANDY22!~ANDY22@200.32.108.XXX PRIVMSG #Buscador.Clarin :me dijo que me hablaras,13,,10,
+from Server::ANTHONY!~ANTHONY@209.13.193.XX PART #Buscador.Clarin,13,,10,
+from Server::alma!~alma@xxxxxxxx.fibertel.com.ar PRIVMSG #Buscador.Clarin :andy, fijate si lees su servidor, a mi no me sale,13,,10,
+from Client:PRIVMSG #Buscador.Clarin :hey alguien me escucha !!!!,10,,13,
+from Server::sergio37!~sergio37@xxxxxxxxx.senado.gov.ar PART #Buscador.Clarin,13,,10,
+from Server::alma!~alma@xxxxxxxx.fibertel.com.ar PRIVMSG #Buscador.Clarin :si hola, tenes re linda voz!!!,13,,10,
+from Server::Gatita!~Gatita@200.47.69.XXX PRIVMSG #Buscador.Clarin :si, yo,13,,10,
+from Server::fernando!~fernando@xxxxxxxxxx.arnet.net.ar JOIN :#Buscador.Clarin,13,,10,
+from Server::ANDY22!~ANDY22@200.32.108.XXX PRIVMSG #Buscador.Clarin :no puedo alma no me sale nada,13,,10,
+from Server::Lucas!~Leo@157.92.208.XXX JOIN :#Buscador.Clarin,13,,10,
+from Server::Fabyan!~Nat@200.47.67.X PRIVMSG #Buscador.Clarin :a no sale,13,,10,
+from Server::Fabyan!~Nat@200.47.67.X PRIVMSG #Buscador.Clarin :nada,13,,10,
+from Server::alma!~alma@xxxxxxxx.fibertel.com.ar PRIVMSG #Buscador.Clarin :igual, andy, es un NN,13,,10,
+from Server::fernando!~fernando@xxxxxxxxxx.arnet.net.ar PART #Buscador.Clarin,13,,10,
+from Server::JUANA!~JUANA@200.49.2.XXX JOIN :#Buscador.Clarin,13,,10,
+from Server::alma!~alma@xxxxxxxx.fibertel.com.ar PRIVMSG #Buscador.Clarin :jajajajajajajajajajajaja,13,,10,
+
