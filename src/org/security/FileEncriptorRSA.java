@@ -73,7 +73,7 @@ public class FileEncriptorRSA {
 
    private static byte[] passwordEncrypt(char[] password, byte[] plaintext) throws Exception {
       byte[] salt = new byte[8];
-      Random random = new Random();
+      SecureRandom random = new SecureRandom();
       random.nextBytes(salt);
 
       PBEKeySpec keySpec = new PBEKeySpec(password);
