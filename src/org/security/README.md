@@ -25,11 +25,36 @@ La primer parte es un proceso de expansión de la clave.  Tomando la clave, se d
 ![DES Key Expansion](../../../images/deskeyderivation.jpg)
 
 La clave K, de 56 bits efectivos, primero se pasa por una permutación PC1, compuesto de
-dos permutaciones PCA y PCB.  La salida de este bloque se pasa por una segunda permutación
+dos permutaciones PCA y PCB.  
+
+```java
+for (int s = 0; s < 28; s++) {
+    Cn.set(s, Key.get(PCA[s] - 1));
+    Dn.set(s, Key.get(PCB[s] - 1));
+}
+```
+
+La salida de este bloque se pasa por una segunda permutación
 PC2 para generar la primer clave *K1* de las 16 subclaves que hay que derivar.  Esta
-permutación tiene de entrada 56 bits y de salida 48.
+permutación tiene de entrada 56 bits y de salida 48:
+
+```java
+Bits b1 = new Bits(56);
+Bits b2 = new Bits(48);
+
+for (int s = 0; s < 48; s++) {
+    b2.set(s, b1.get(PC2[s] - 1));
+}
+```
 
 El bloque que sale de la primera permutación por otro lado, sufre un shifteo cíclico en los bits que viene dado por la función *Vi* (cuantos bits se shiftean según el índice del round).
+
+```java
+for (int d = 0; d <= i; d++) {
+    Cn.lshifts(shifts[d]);
+    Dn.lshifts(shifts[d]);
+}
+```
 
 Esta salida es la entrada para el próximo round donde el proceso se repite hasta alcanzar
 las 16 repeticiones y así generar las 16 subclaves.
