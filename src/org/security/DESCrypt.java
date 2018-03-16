@@ -386,7 +386,7 @@ public class DESCrypt {
             cipher.set(j, plaintext.get(IP[j] - 1));
         }
 
-        // This point ok
+        // Divide the 64 bits m into two halves.
         for (int j = 0; j < 32; j++) {
             L.set(j, cipher.get(j));
             R.set(j, cipher.get(j + 32));
@@ -394,11 +394,10 @@ public class DESCrypt {
         La = (Bits) L.clone();
         Ra = (Bits) R.clone();
 
-        // this point is ok.
-
         // System.out.println("L 0:"+La);
         // System.out.println("R 0:"+Ra);
 
+        // Go for it.  Process each round of Feistel Blocks.
         for (int i = 0; i < 16; i++) {
             if (bDecrypt)
                 K = KS(15 - i, key);
@@ -416,13 +415,11 @@ public class DESCrypt {
         Bits join = new Bits(64);
         Bits out = new Bits(64);
 
-        // From here
-
+        // Join the two halves.
         join.copyFrom(R, 32);
         join.copyFrom(32, L, 0, 32);
 
-        // Ok here
-
+        // Last permutation.
         for (int i = 0; i < 64; i++) {
             out.set(i, join.get(IP_[i] - 1));
         }

@@ -1,16 +1,16 @@
 # DEScripción de DES.
 
 
-El algoritmo está implementado [acá](DESCrypt.java).
+El algoritmo está implementado [acá](DESCrypt.java). Se invita al lector a toquetearlo, probarlo, etc. y reportar o contribuir con puntos interesantes (de cara a un objetivo didáctico).
 
 La definición formal es algo así:
 
 ![DES Algorithm](../../../images/desdefinition.jpg)
 
 El algoritmo busca difundir y confundir los bits todo lo posible, partiendo del Plaintext
-y aplicando rounds repetitivos sobre el mismo para enroscar y enroscar los bits.
+y aplicando rounds repetitivos sobre el mismo para enroscar y enroscar los bits. Aplica operaciones simples como XOR, sustituciones, permutaciones, desplazamientos.  Con esto se arman redes de sustitución y permutación que van combinando los bits.
 
-La clave si bien es de 64 bits, utiliza solo 56 bits ya que un byte entero se usaba en esa epoca para los códigos de redundancia cíclica (el almacenamiento no era tan reliable como hoy en día).
+La clave si bien es de 64 bits, utiliza solo 56 bits ya que un byte entero se usaba en esa epoca para los códigos de redundancia cíclica o checksum.
 
 Los parámetros de los algoritmos son las diferentes permutaciones que son fijas y que son quizás el punto más oscuro de DES.
 
@@ -40,10 +40,44 @@ El algoritmo principal esta basado en Feistel Boxes:
 
 ![DES Feistel](../../../images/des.jpg)
 
-Son 16 rounds también logicamente. El primer paso es aplicar la permutación *IP* de 64 a 64. Luego el bloque de 64 se divide en dos de 32, izquierda (L) y derecha (R).
+Son 16 rounds también logicamente. El primer paso es aplicar la permutación *IP* de 64 a 64.
+
+```java
+// First permutation
+for (int j = 0; j < 64; j++) {
+    cipher.set(j, plaintext.get(IP[j] - 1));
+}
+```
+
+Luego el bloque de 64 se divide en dos de 32, izquierda (L) y derecha (R).
+
+```java
+// Divide the 64 bits m into two halves.
+for (int j = 0; j < 32; j++) {
+    L.set(j, cipher.get(j));
+    R.set(j, cipher.get(j + 32));
+}
+La = (Bits) L.clone();
+Ra = (Bits) R.clone();
+```
 
 Del bloque de la derecha se pasa por una función *F* y se xorea con la izquierda, para
 luego intercambiarlos para el próximo round.
+
+```java
+// Go for it.  Process each round of Feistel Blocks.
+for (int i = 0; i < 16; i++) {
+    if (bDecrypt)
+        K = KS(15 - i, key);
+    else
+        K = KS(i, key);
+    L.copyFrom(Ra, 32);
+    R.copyFrom(La.xor(f(Ra, K)));
+
+    La = (Bits) L.clone();
+    Ra = (Bits) R.clone();
+}
+```
 
 ## Función F
 
@@ -51,11 +85,11 @@ Un poco más compleja y hace uso de los S boxes y de las subclaves.
 
 ![DES F Function](../../../images/desffunction.jpg)
 
-Arranca con el bloque de 32 bits del lado derecho ***Ri-1*** y aplica la permutación E, para luego xorearla con la clave *Ki* que surge del proceso de expansión de la clave, para luego usarse como entrada a los S-boxes.
+Arranca con el bloque de 32 bits del lado derecho ***Ri-1*** y aplica la permutación E, para luego xorearla con la clave *Ki* que surge del proceso de expansión de la clave, que finalmente se usa como entrada a los S-boxes.
 
 ![DES S Boxes](../../../images/dessboxes.jpg)
 
-Son 8 matrices de 16x16.  La entrada completa de 48 bits se divide entonces en 8 entradas de 6 bits cada una, y cada entrada es asignada a cada una de las 8 matrices *Si*.
+Son 8 matrices de 8x8.  La entrada completa de 48 bits se divide entonces en 8 entradas de 6 bits cada una, y cada entrada es asignada a cada una de las 8 matrices *Si*.
 
 La entrada entonces para cada matriz es *b1.b2.b3.b4.b5.b6* y estos bits se usan para calcular la fila *r* y la columna *c* para indexar la matriz S.  Se accede así a la matriz y la salida son los 4 bits almacenados en esa posición de la matriz: *s1.s2.s3.s4*.
 
@@ -83,4 +117,19 @@ Como cada matriz *Si* tiene una salida de 4 bits, al juntar y concatenar todos l
 
 ## Encripción y Desencripción
 
-Finalmente se pasa por una nueva permutación ***IP*** que es la inversa de la primera.  La desencripción se procede invirtiendo el orden en el que se utilizan las subkeys generadas por la expansión de las claves, lo cual permite ir desenroscando lo que la encripcion fue armando, todo mediante el mismo exacto algoritmo.
+Finalmente se pasa por una nueva permutación ***IP*** que es la inversa de la primera.  La desencripción se procede invirtiendo el orden en el que se utilizan las subkeys generadas por la expansión de las claves.
+
+```java
+for (int i = 0; i < 16; i++) {
+    if (bDecrypt)
+        K = KS(15 - i, key);
+    else
+        K = KS(i, key);
+    L.copyFrom(Ra, 32);
+    R.copyFrom(La.xor(f(Ra, K)));
+
+    La = (Bits) L.clone();
+    Ra = (Bits) R.clone();
+}
+```
+El único cambio entre la encripción y la desencripción es justamente que se invierte el orden de las subclaves.  Esto permite ir desenroscando lo que la encripcion fue armando, todo mediante el mismo exacto algoritmo.
