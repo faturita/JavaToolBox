@@ -18,7 +18,7 @@ Los parámetros de los algoritmos son las diferentes permutaciones que son fijas
 
 Las permutaciones son vectores o matrices de igual o distinta longitud que indican los índices de los valores original a utilizar en cada una de las posiciones.  Ejemplo, una permutación [1 2 3] de [3 2 5], da [3 2 5], y una permutación [3 3 1] daría [5 5 3].
 
-# Expansión de la clave
+# Expansión de la clave
 
 La primer parte es un proceso de expansión de la clave.  Tomando la clave, se derivan un juego de 16 subclaves.
 
@@ -35,7 +35,7 @@ que viene dado por la función '''Vi''' (cuantos bits se shiftean según el índ
 Esta salida es la entrada para el próximo round donde el proceso se repite hasta alcanzar
 los 16.
 
-# Feistel Boxes
+# Fesitel Boxes
 
 El algoritmo principal esta basado en Feistel Boxes:
 
@@ -46,10 +46,15 @@ Son 16 rounds también logicamente. El primer paso es aplicar la permutación ''
 Del bloque de la derecha se pasa por una función '''F''' y se xorea con la izquierda, para
 luego intercambiarlos para el próximo round.
 
-## Función F
+## Función F
 
 ![DES F Function](../../../images/desffunction.jpg)
 
-La función S es un poco más compleja y hace uso de los S boxes y de las subclaves.
+Un poco más compleja y hace uso de los S boxes y de las subclaves.
+Arranca con el bloque de 32 bits del lado derecho '''Ri-1''' y aplica la permutación E, para luego xorearla con la clave '''Ki''' que surge del proceso de expansión de la clave.
+
+![DES S Boxes](../../../images/dessboxes.jpg)
+
+## Encripción y Desencripción
 
 Finalmente se pasa por una nueva permutación '''IP''' que es la inversa de la primera.  La desencripción se procede invirtiendo el orden en el que se utilizan las subkeys generadas por la expansión de las claves, lo cual permite ir '''desenroscando''' lo que la encripcion fue armando, todo mediante el mismo exacto algoritmo.
