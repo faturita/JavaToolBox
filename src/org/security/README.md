@@ -158,3 +158,7 @@ for (int i = 0; i < 16; i++) {
 }
 ```
 El único cambio entre la encripción y la desencripción es justamente que se invierte el orden de las subclaves.  Esto permite ir desenroscando lo que la encripcion fue armando, todo mediante el mismo exacto algoritmo.
+
+# Referencias
+
+* Menezes, Capítulo 7.
