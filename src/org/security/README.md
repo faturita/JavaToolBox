@@ -1,7 +1,7 @@
 # DEScripción de DES.
 
 
-El algoritmo está implementado !(acá)[DESCrypt.java].
+El algoritmo está implementado ![acá](DESCrypt.java).
 
 La definición formal es algo así:
 
