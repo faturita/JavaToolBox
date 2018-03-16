@@ -162,4 +162,4 @@ El único cambio entre la encripción y la desencripción es justamente que se i
 # Referencias
 
 * Menezes, Capítulo 7.
-* (Defunct Mapplesoft DES description)[https://www.maplesoft.com/applications/index.aspx/powertools/cryptography/HTML/DES-Example.html]
+* [Defunct Mapplesoft DES description](https://www.maplesoft.com/applications/index.aspx/powertools/cryptography/HTML/DES-Example.html)
