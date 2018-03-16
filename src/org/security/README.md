@@ -26,14 +26,13 @@ La primer parte es un proceso de expansión de la clave.  Tomando la clave, se d
 
 La clave K, de 56 bits efectivos, primero se pasa por una permutación PC1, compuesto de
 dos permutaciones PCA y PCB.  La salida de este bloque se pasa por una segunda permutación
-PC2 para generar la primer clave '''K1''' de las 16 subclaves que hay que derivar.  Esta
+PC2 para generar la primer clave 'K1' de las 16 subclaves que hay que derivar.  Esta
 permutación tiene de entrada 56 bits y de salida 48.
 
-El bloque que sale de la primera permutación por otro lado, sufre un shifteo en los bits
-que viene dado por la función '''Vi''' (cuantos bits se shiftean según el índice del round).
+El bloque que sale de la primera permutación por otro lado, sufre un shifteo cíclico en los bits que viene dado por la función 'Vi' (cuantos bits se shiftean según el índice del round).
 
 Esta salida es la entrada para el próximo round donde el proceso se repite hasta alcanzar
-los 16.
+las 16 repeticiones y así generar las 16 subclaves.
 
 # Fesitel Boxes
 
@@ -41,19 +40,26 @@ El algoritmo principal esta basado en Feistel Boxes:
 
 ![DES Feistel](../../../images/des.jpg)
 
-Son 16 rounds también logicamente. El primer paso es aplicar la permutación '''IP''' de 64 a 64. Luego el bloque de 64 se divide en dos de 32, izquierda (L) y derecha (R).
+Son 16 rounds también logicamente. El primer paso es aplicar la permutación 'IP' de 64 a 64. Luego el bloque de 64 se divide en dos de 32, izquierda (L) y derecha (R).
 
 Del bloque de la derecha se pasa por una función '''F''' y se xorea con la izquierda, para
 luego intercambiarlos para el próximo round.
 
 ## Función F
 
+Un poco más compleja y hace uso de los S boxes y de las subclaves.
+
 ![DES F Function](../../../images/desffunction.jpg)
 
-Un poco más compleja y hace uso de los S boxes y de las subclaves.
-Arranca con el bloque de 32 bits del lado derecho '''Ri-1''' y aplica la permutación E, para luego xorearla con la clave '''Ki''' que surge del proceso de expansión de la clave.
+Arranca con el bloque de 32 bits del lado derecho '''Ri-1''' y aplica la permutación E, para luego xorearla con la clave 'Ki' que surge del proceso de expansión de la clave, para luego usarse como entrada a los S-boxes.
 
 ![DES S Boxes](../../../images/dessboxes.jpg)
+
+Son 8 matrices de 16x16.  La entrada completa de 48 bits se divide entonces en 8 entradas de 6 bits cada una, y cada entrada es asignada a cada una de las 8 matrices 'Si'.
+
+La entrada entonces para cada matriz es 'b1.b2.b3.b4.b5.b6' y estos bits se usan para calcular la fila 'r' y la columna 'c' para indexar la matriz S.  Se accede así a la matriz y la salida son los 4 bits almacenados en esa posición de la matriz: 's1.s2.s3.s4'.
+
+Como cada matriz 'Si' tiene una salida de 4 bits, al juntar y concatenar todos los bits de los 8 se alcanzan los 32 bits que se pasan nuevamente por otra permutación, 'P', y son los que se utilizan para xorear con el lado izquierdo 'L'.
 
 ## Encripción y Desencripción
 

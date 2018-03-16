@@ -1,9 +1,3 @@
-package org.security;
-import java.util.BitSet;
-
-import java.text.NumberFormat;
-
-
 /**
  * Created by IntelliJ IDEA. User: vexrarod Date: 04/09/2003 Time: 09:49:19 To
  * change this template use Options | File Templates.
@@ -17,7 +11,15 @@ import java.text.NumberFormat;
  * /> <a href=
  * "http://www.mapleapps.com/powertools/cryptography/HTML/DES-Example.html" />
  */
+package org.security;
+import java.util.BitSet;
 
+import java.text.NumberFormat;
+
+/**
+ * Class to handle bit operations.
+ *
+ **/
 class Bits extends BitSet {
     private int size;
 
@@ -121,6 +123,7 @@ class Bits extends BitSet {
         return a;
     }
 
+    // Uses bitwise aritmetic to get the bit out of the long value.
     public void load(long iVal) {
         for (int i = 0; i < size(); i++) {
             // System.out.println ((iVal>>i)+""+((iVal >> i) & (0x01)));
@@ -154,7 +157,14 @@ class Bits extends BitSet {
 
 }
 
+/**
+ * DES implementation
+ *
+ * Permutations are NOT ZERO BASED.
+ **/
 public class DESCrypt {
+    // FIXED value permutation and DES parameters
+
     int[]   IP     = { 58, 50, 42, 34, 26, 18, 10, 2, 60, 52, 44, 36, 28, 20,
             12, 4, 62, 54, 46, 38, 30, 22, 14, 6, 64, 56, 48, 40, 32, 24, 16,
             8, 57, 49, 41, 33, 25, 17, 9, 1, 59, 51, 43, 35, 27, 19, 11, 3, 61,
@@ -172,6 +182,7 @@ public class DESCrypt {
     int[]   P      = { 16, 7, 20, 21, 29, 12, 28, 17, 1, 15, 23, 26, 5, 18, 31,
             10, 2, 8, 24, 14, 32, 27, 3, 9, 19, 13, 30, 6, 22, 11, 4, 25 };
 
+    // S-Boxes.  8 Si matrices of 8x8 positions. Output values are 0-16, 4 bits.
     int[][] S      = {
             { 14, 4, 13, 1, 2, 15, 11, 8, 3, 10, 6, 12, 5, 9, 0, 7, 0, 15, 7,
             4, 14, 2, 13, 1, 10, 6, 12, 11, 9, 5, 3, 8, 4, 1, 14, 8, 13, 6, 2,
@@ -206,12 +217,14 @@ public class DESCrypt {
             2, 0, 6, 10, 13, 15, 3, 5, 8, 2, 1, 14, 7, 4, 10, 8, 13, 15, 12, 9,
             0, 3, 5, 6, 11 }, };
 
+    // PC1
     int[]   PCA    = { 57, 49, 41, 33, 25, 17, 9, 1, 58, 50, 42, 34, 26, 18,
             10, 2, 59, 51, 43, 35, 27, 19, 11, 3, 60, 52, 44, 36 };
 
     int[]   PCB    = { 63, 55, 47, 39, 31, 23, 15, 7, 62, 54, 46, 38, 30, 22,
             14, 6, 61, 53, 45, 37, 29, 21, 13, 5, 28, 20, 12, 4 };
 
+    // Vi
     int[]   shifts = { 1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1 };
 
     int[]   PC2    = { 14, 17, 11, 24, 1, 5, 3, 28, 15, 6, 21, 10, 23, 19, 12,
@@ -251,13 +264,14 @@ public class DESCrypt {
         System.out.println(plaintext + "-Plaintext:" + plaintext.toLong()+":"+String.format("0x%08X", plaintext.toLong()));
         a = plaintext.toLong();
 
-        key.load(0x133457799bbcdff3L);
         key.load(0x0101010101010101L);
         System.out.println(key + "-Key      :" + key.toLong() + ":" + key.toHex());
 
+        // Encrypt.
         Bits out = t.des(plaintext, key, false);
         System.out.println(out + "-Cipher   :" + out.toLong()+ ":" + out.toHex());
 
+        // Decrypt
         Bits in = t.des(out, key, true);
         System.out.println(in + "-Plaintext:" + in.toLong()+ ":" + in.toHex());
         b = in.toLong();
@@ -266,6 +280,7 @@ public class DESCrypt {
             System.out.println("Encryption Scheme Ok!");
     }
 
+    // Key Derivation.  Returns the key derivation for index i
     public Bits KS(int i, Bits Key) {
         Bits Cn = new Bits(28);
         Bits Dn = new Bits(28);
@@ -292,12 +307,12 @@ public class DESCrypt {
         }
 
         // System.out.println("Key "+i+":"+b2);
-        // This works perfectly.
 
         return b2;
 
     }
 
+    // F-Function
     public Bits f(Bits R, Bits K) {
         Bits b = (Bits) K.clone();
         Bits ER = new Bits(48);
@@ -318,6 +333,7 @@ public class DESCrypt {
 
         // b is the resulting from K(+)E(R)
 
+        // Divide the 48 bits block in 8 inputs of 6-bits length each.
         for (int i = 0; i < 8; i++) {
             Bits aux = new Bits(6);
             Bits outs = new Bits(4);
