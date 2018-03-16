@@ -1,5 +1,5 @@
+# DEScripción de DES.
 
-# Descripción del algoritmo DES
 
 El algoritmo está implementado !(acá)[DESCrypt.java].
 
