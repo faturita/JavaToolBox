@@ -3,6 +3,8 @@
 
 El algoritmo está implementado [acá](DESCrypt.java). Se invita al lector a toquetearlo, probarlo, etc. y reportar o contribuir con puntos interesantes (de cara a un objetivo didáctico).
 
+> NOTA: Este código es una implementación didáctica y jamás debe usarse como rutina de encripción simétrica, ya que además de usar un algoritmo que ya está quebrado, la propia implementación no tiene la más mínima rigurosidad.
+
 La definición formal es algo así:
 
 ![DES Algorithm](../../../images/desdefinition.jpg)
